@@ -6,12 +6,12 @@ package br.com.a3maismais.a321go.model;
 
 public class Loop {
 
-    Integer numberOfExercises;
-    Long exerciseTime;
-    Long prepareTime;
-    Long restTime;
-    Status status;
-    Chron chron;
+    private Integer numberOfExercises;
+    private Long exerciseTime;
+    private Long prepareTime;
+    private Long restTime;
+    private Status status;
+    private Chron chron;
 
     public Loop(RotineConfig config, Chron cronometro) {
         this.numberOfExercises = config.getNumberOfExercises();
@@ -27,15 +27,15 @@ public class Loop {
         for (int i = 0; i < this.getNumberOfExercises(); i++) {
             startExercise();
         }
-        System.err.println("<<<<Ciclo finalizado!");
+        System.err.println("<<<<Finished!");
 
         startRest();
 
     }
 
     public void startExercise() {
-        System.out.println("Comecei a atividade!");
-        System.out.println("Cronometro iniciado: " + this.getExerciseTime());
+        System.out.println("Starting a new exercise!");
+        System.out.println("Chron launched: " + this.getExerciseTime());
 
         this.setStatus(Status.EXERCISE);
         System.out.println(this.status.getCor());
@@ -46,19 +46,24 @@ public class Loop {
     }
 
     public void startPrepare() {
-        System.out.println("Comecei a troca!");
+        System.out.println("Changing exercise");
 
         this.setStatus(Status.PREPARE);
         System.out.println(this.status.getCor());
 
-        System.out.println("Cronometro iniciado: " + this.getPrepareTime() );
+        System.out.println("Chron launched: " + this.getPrepareTime() );
 
         chron.countDown(prepareTime);
     }
 
     public void startRest() {
+
+        System.out.println("It's time to some rest");
+
         this.setStatus(Status.REST);
         System.out.println(this.status.getCor());
+
+        System.out.println("Chron launched: " + this.getRestTime() );
         chron.countDown(this.getRestTime() );
     }
 
