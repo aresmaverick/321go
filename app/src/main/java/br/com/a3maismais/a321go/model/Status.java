@@ -6,5 +6,22 @@ package br.com.a3maismais.a321go.model;
 
 public enum Status {
 
-    Exercise, Prepare, Rest
+    STOPPED("Stopped - Back"),
+    EXERCISE("In Action - Green"),
+    PREPARE("Preparing - Yellow"),
+    REST("Rest - Red");
+
+    private final String color;
+
+    private Status(String cor) {
+
+        this.color = cor;
+
+    }
+
+    public String getCor() {
+        return color;
+    }
+
+
 }
