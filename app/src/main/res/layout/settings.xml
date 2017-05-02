@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.a3maismais.a321go.MainActivity"
+    tools:context="br.com.a3maismais.a321go.activity.ActivityPrincipal"
     android:columnCount="2"
     android:rowCount="6"
     android:orientation="vertical">
