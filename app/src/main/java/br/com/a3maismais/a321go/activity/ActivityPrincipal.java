@@ -11,24 +11,35 @@ import br.com.a3maismais.a321go.model.RoutineConfig;
 
 public class ActivityPrincipal extends AppCompatActivity {
 
-
-
-    //TODO
-    RoutineConfig config = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
 
+        Button startButton = (Button) findViewById(R.id.start_button);
         Button settingButton = (Button) findViewById(R.id.settings_button);
+        Button pauseButton = (Button) findViewById(R.id.pause_button);
+
+        RoutineConfig config = (RoutineConfig) getIntent().getSerializableExtra(RoutineConfig.CONFIG_NAME);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityPrincipal.this, ActivitySettings.class);
-                intent.putExtra(RoutineConfig.CONFIG_NAME, config);
-                startActivity(intent);
+                finish();
+            }
+        });
+
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
