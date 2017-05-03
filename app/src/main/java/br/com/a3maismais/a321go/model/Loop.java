@@ -24,8 +24,11 @@ public class Loop {
     public void startLoop() {
         System.err.println(">>>>Starting a new Loop");
 
-        for (int i = 0; i < this.getNumberOfExercises(); i++) {
+        for (int i = 1; i <= this.getNumberOfExercises(); i++) {
             startExercise();
+            if(i != this.getNumberOfExercises())
+                startPrepare();
+
         }
         System.err.println("<<<<Finished!");
 
@@ -41,8 +44,6 @@ public class Loop {
         System.out.println(this.status.getCor());
 
         chron.countDown(this.getExerciseTime());
-
-        startPrepare();
     }
 
     public void startPrepare() {
