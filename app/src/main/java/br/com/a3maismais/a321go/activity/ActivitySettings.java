@@ -1,8 +1,6 @@
 package br.com.a3maismais.a321go.activity;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import br.com.a3maismais.a321go.R;
