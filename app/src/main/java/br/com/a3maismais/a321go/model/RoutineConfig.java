@@ -6,6 +6,8 @@ package br.com.a3maismais.a321go.model;
 
 public class RoutineConfig {
 
+    public static final String CONFIG_NAME="br.com.a3maismais.a321go.model.RoutineConfig";
+
     private Integer numberOfLoops;
     private Integer numberOfExercises;
     private Long exerciseTime;
