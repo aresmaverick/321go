@@ -48,33 +48,33 @@
         android:layout_gravity="fill_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exemplo"/>
+        android:text="1"/>
 
     <EditText
         android:id="@+id/number_activity"
         android:layout_gravity="fill_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exemplo"/>
+        android:text="1"/>
 
     <EditText
         android:id="@+id/time_activity"
         android:layout_gravity="fill_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exemplo"/>
+        android:text="1"/>
 
     <EditText
         android:id="@+id/time_prepare"
         android:layout_gravity="fill_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exemplo"/>
+        android:text="1"/>
 
     <EditText
         android:id="@+id/time_rest"
         android:layout_gravity="fill_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exemplo"/>
+        android:text="1"/>
 </GridLayout>
