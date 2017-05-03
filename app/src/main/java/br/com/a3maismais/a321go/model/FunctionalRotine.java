@@ -6,7 +6,7 @@ package br.com.a3maismais.a321go.model;
 
 public class FunctionalRotine {
 
-    public FunctionalRotine(RotineConfig config) {
+    public FunctionalRotine(RoutineConfig config) {
 
         Chron cronometro = new ChronImpl();
 
@@ -25,7 +25,7 @@ public class FunctionalRotine {
 
     public static void main(String[] args) {
 
-        RotineConfig config = new RotineConfig(2, 4, 5000L, 3000L, 10000L);
+        RoutineConfig config = new RoutineConfig(2, 4, 5000L, 3000L, 10000L);
         new FunctionalRotine(config);
 
     }
