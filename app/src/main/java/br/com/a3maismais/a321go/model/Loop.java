@@ -13,7 +13,7 @@ public class Loop {
     private Status status;
     private Chron chron;
 
-    public Loop(RotineConfig config, Chron cronometro) {
+    public Loop(RoutineConfig config, Chron cronometro) {
         this.numberOfExercises = config.getNumberOfExercises();
         this.exerciseTime = config.getExerciseTime();
         this.prepareTime = config.getPrepareTime();
