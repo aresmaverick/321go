@@ -17,6 +17,14 @@ public class RoutineConfig implements Serializable {
     private Long restTime;
     private Status status;
 
+    public RoutineConfig () {
+        this.numberOfLoops = 1;
+        this.numberOfExercises = 2;
+        this.exerciseTime = 60000L;
+        this.prepareTime = 30000L;
+        this.restTime = 180000L;
+    }
+
     public RoutineConfig(Integer numberOfLoops, Integer numberOfExercises, Long exerciseTime, Long prepareTime,
                          Long restTime) {
 
