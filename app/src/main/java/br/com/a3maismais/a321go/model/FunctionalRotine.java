@@ -12,7 +12,7 @@ public class FunctionalRotine {
 
         System.out.println(Status.STOPPED.getCor());
 
-        int ciclos = config.getNumCiclos();
+        int ciclos = config.getNumberOfLoops();
         while (ciclos > 0) {
             Loop ciclo = new Loop(config, cronometro);
             ciclo.startLoop();
