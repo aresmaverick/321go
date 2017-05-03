@@ -4,7 +4,7 @@ package br.com.a3maismais.a321go.model;
  * Created by ricardo on 5/2/17.
  */
 
-public class RotineConfig {
+public class RoutineConfig {
 
     private Integer numberOfLoops;
     private Integer numberOfExercises;
@@ -13,8 +13,8 @@ public class RotineConfig {
     private Long restTime;
     private Status status;
 
-    public RotineConfig(Integer numberOfLoops, Integer numberOfExercises, Long exerciseTime, Long prepareTime,
-                        Long restTime) {
+    public RoutineConfig(Integer numberOfLoops, Integer numberOfExercises, Long exerciseTime, Long prepareTime,
+                         Long restTime) {
 
         this.numberOfLoops = numberOfLoops;
         this.numberOfExercises = numberOfExercises;
