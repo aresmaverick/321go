@@ -1,10 +1,12 @@
 package br.com.a3maismais.a321go.model;
 
+import java.io.Serializable;
+
 /**
  * Created by ricardo on 5/2/17.
  */
 
-public class RoutineConfig {
+public class RoutineConfig implements Serializable {
 
     public static final String CONFIG_NAME="br.com.a3maismais.a321go.model.RoutineConfig";
 
