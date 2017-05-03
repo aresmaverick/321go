@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="br.com.a3maismais.a321go.activity.ActivityPrincipal"
     android:columnCount="2"
-    android:rowCount="7"
+    android:rowCount="6"
     android:orientation="vertical">
 
     <TextView
@@ -38,17 +38,10 @@
         android:text="Rest Time"/>
 
     <Button
-        android:id="@+id/save_button"
+        android:id="@+id/next_button"
         android:layout_columnSpan="2"
         android:layout_width="match_parent"
-        android:text="Save"/>
-
-    <Button
-        android:id="@+id/cancel_button"
-        android:textColor="@color/colorAccent"
-        android:layout_columnSpan="2"
-        android:layout_width="match_parent"
-        android:text="Cancel"/>
+        android:text="Next"/>
 
     <EditText
         android:layout_gravity="fill_horizontal"
