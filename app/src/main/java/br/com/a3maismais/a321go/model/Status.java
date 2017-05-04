@@ -1,25 +1,27 @@
 package br.com.a3maismais.a321go.model;
 
+import android.graphics.Color;
+
 /**
  * Created by fred on 27/04/17.
  */
 
 public enum Status {
 
-    STOPPED("Stopped - Back"),
-    EXERCISE("In Action - Green"),
-    PREPARE("Preparing - Yellow"),
-    REST("Rest - Red");
+    STOPPED(Color.BLACK),
+    EXERCISE(Color.GREEN),
+    PREPARE(Color.YELLOW),
+    REST(Color.RED);
 
-    private final String color;
+    private final int color;
 
-    private Status(String cor) {
+    Status(int cor) {
 
         this.color = cor;
 
     }
 
-    public String getCor() {
+    public int getCor() {
         return color;
     }
 

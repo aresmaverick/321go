@@ -4,7 +4,7 @@ package br.com.a3maismais.a321go.model;
  * Created by ricardo on 5/2/17.
  */
 
-public class FunctionalRotine {
+public class FunctionalRotine implements ScheduledTask {
 
     public FunctionalRotine(RoutineConfig config) {
 
@@ -23,11 +23,8 @@ public class FunctionalRotine {
 
     }
 
-    public static void main(String[] args) {
-
-        RoutineConfig config = new RoutineConfig(2, 4, 5000L, 3000L, 10000L);
-        new FunctionalRotine(config);
+    @Override
+    public void executeScheduled() {
 
     }
-
 }
