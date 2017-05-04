@@ -6,4 +6,5 @@ package br.com.a3maismais.a321go.model;
 
 public interface Chron {
     public void countDown(Long millis);
+    public void countDown(ScheduledTask scheduledTask, Long millis);
 }
