@@ -24,4 +24,14 @@ public class ChronImpl implements Chron {
 
 
     }
+
+    @Override
+    public void countDown(ScheduledTask scheduledTask, Long millis) {
+        try {
+            Thread.sleep(millis);
+            scheduledTask.executeScheduled();
+        } catch (Exception e) {
+            throw new RuntimeException("Could not run the task from " + scheduledTask.getClass());
+        }
+    }
 }
