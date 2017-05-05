@@ -1,14 +1,15 @@
 package br.com.a3maismais.a321go.activity;
 
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
 import br.com.a3maismais.a321go.R;
-import br.com.a3maismais.a321go.model.FunctionalRoutine;
 import br.com.a3maismais.a321go.model.RoutineConfig;
 
 public class ActivityPrincipal extends AppCompatActivity {
@@ -22,6 +23,10 @@ public class ActivityPrincipal extends AppCompatActivity {
 
     GridLayout background;
 
+    private Chronometer chronometer;
+    boolean isPaused = false;
+    long savedTime = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,8 @@ public class ActivityPrincipal extends AppCompatActivity {
         Button startButton = (Button) findViewById(R.id.start_button);
         Button settingButton = (Button) findViewById(R.id.settings_button);
         Button pauseButton = (Button) findViewById(R.id.pause_button);
+
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
 
         numberExecutedCicles = (TextView) findViewById(R.id.number_executed_cicles);
         numberExecutedExercises = (TextView) findViewById(R.id.number_executed_exercises);
@@ -43,8 +50,24 @@ public class ActivityPrincipal extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FunctionalRoutine fr = new FunctionalRoutine(ActivityPrincipal.this);
-                fr.start();
+
+                //FIXME - Não esta recebendo valores da tela
+                //FunctionalRoutine fr = new FunctionalRoutine(ActivityPrincipal.this);
+                //fr.start();
+
+                if(isPaused){
+                    chronometer.setBase(SystemClock.elapsedRealtime() + savedTime);
+                    chronometer.start();
+                    savedTime = 0;
+                    isPaused = false;
+                }
+                else{
+                    chronometer.setBase(SystemClock.elapsedRealtime()); //executedExerciseTime
+                    chronometer.start();
+                    savedTime = 0;
+                }
+
+
             }
         });
 
@@ -58,7 +81,11 @@ public class ActivityPrincipal extends AppCompatActivity {
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(isPaused == false){ //entra para false;
+                    savedTime = chronometer.getBase() - SystemClock.elapsedRealtime();
+                }
+                chronometer.stop();
+                isPaused = true;
             }
         });
     }
