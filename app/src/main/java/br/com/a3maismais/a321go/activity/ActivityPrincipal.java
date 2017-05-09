@@ -9,9 +9,10 @@ import android.widget.TextView;
 
 import br.com.a3maismais.a321go.R;
 import br.com.a3maismais.a321go.model.CountDown;
+import br.com.a3maismais.a321go.model.CountDownChronOwner;
 import br.com.a3maismais.a321go.model.RoutineConfig;
 
-public class ActivityPrincipal extends AppCompatActivity {
+public class ActivityPrincipal extends AppCompatActivity implements CountDownChronOwner {
 
     RoutineConfig config;
 
@@ -25,9 +26,6 @@ public class ActivityPrincipal extends AppCompatActivity {
     TextView centisecondText;
 
     GridLayout background;
-
-    boolean isPaused = false;
-    long savedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,5 +112,25 @@ public class ActivityPrincipal extends AppCompatActivity {
 
     public void setBackgroundColor(int backgroundColor) {
         this.background.setBackgroundColor(backgroundColor);
+    }
+
+    @Override
+    public TextView getMinutesText() {
+        return null;
+    }
+
+    @Override
+    public TextView getSecondsText() {
+        return null;
+    }
+
+    @Override
+    public TextView getCentisecondsText() {
+        return null;
+    }
+
+    @Override
+    public RoutineConfig getRoutineConfig() {
+        return null;
     }
 }
