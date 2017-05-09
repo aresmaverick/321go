@@ -1,91 +1,99 @@
 package br.com.a3maismais.a321go.model;
 
+import android.widget.TextView;
+
 import br.com.a3maismais.a321go.activity.ActivityPrincipal;
 
 /**
  * Created by fred on 04/05/17.
  */
 
-public class FunctionalRoutine implements ScheduledTask {
+public class FunctionalRoutine implements CountDownChronOwner {
 
-    private ActivityPrincipal principal;
-    private Chron chron;
 
-    private int numberOfLoops;
-    private int numberOfExercises;
+    ActivityPrincipal principal;
+
+    private int actualNumberOfLoops = 0;
+    private int actualNumberOfExercises = 0;
     private Status status = Status.STOPPED;
 
     public FunctionalRoutine(ActivityPrincipal principal) {
         this.principal = principal;
     }
 
-    public void start() {
-
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    chron = new ChronImpl();
-
-                    for (int loopCount = 1; loopCount <= principal.getNumberOfLoops(); loopCount++) {
-                        numberOfLoops = loopCount;
-
-                        for (int exerciseCount = 1; exerciseCount <= principal.getNumberOfExercises(); exerciseCount++) {
-                            numberOfExercises = exerciseCount;
-
-                            updateActivity();
-
-                            startExercise();
-
-                            boolean isExerciseListCompleted = exerciseCount == principal.getNumberOfExercises();
-
-                            if (!isExerciseListCompleted) {
-                                startPrepare();
-                            }
-                        }
-
-                        boolean isLoopListCompleted = loopCount == principal.getNumberOfLoops();
-
-                        if (!isLoopListCompleted) {
-                            startRest();
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        thread.start();
+    @Override
+    public TextView getMinutesText() {
+        return principal.getMinutesText();
     }
 
     @Override
-    public void executeScheduled() {
-        updateActivity();
+    public TextView getSecondsText() {
+        return principal.getSecondsText();
     }
 
-    private void updateActivity() {
-        principal.setNumberOfLoops(numberOfLoops);
-        principal.setNumberOfExercies(numberOfExercises);
-        principal.setBackgroundColor(status.getCor());
+    @Override
+    public TextView getCentisecondsText() {
+        return principal.getCentisecondsText();
     }
 
-    private void startExercise() {
-        this.setStatus(Status.EXERCISE);
-        chron.countDown(this, principal.getExerciseTime());
+    @Override
+    public RoutineConfig getRoutineConfig() {
+        return principal.getRoutineConfig();
     }
 
-    private void startPrepare() {
-        this.setStatus(Status.PREPARE);
-        chron.countDown(this, principal.getPrepareTime());
+    @Override
+    public void onFinish() {
+        onStart();
     }
 
-    private void startRest() {
-        this.setStatus(Status.REST);
-        chron.countDown(this, principal.getRestTime());
-    }
+    public void onStart() {
+        CountDown cd;
 
-    private void setStatus(Status status) {
-        this.status = status;
+        switch (status) {
+            case STOPPED:
+                actualNumberOfLoops++;
+                actualNumberOfExercises++;
+                status = Status.EXERCISE;
+
+                principal.setBackgroundColor(status.getCor());
+
+                cd = new CountDown(this, principal.getExerciseTime(), 10);
+                cd.start();
+
+                break;
+            case EXERCISE:
+                status = Status.PREPARE;
+
+                principal.setBackgroundColor(status.getCor());
+
+                cd = new CountDown(this, principal.getPrepareTime(), 10);
+                cd.start();
+
+                break;
+            case PREPARE:
+                actualNumberOfExercises++;
+                status = Status.EXERCISE;
+
+                principal.setBackgroundColor(status.getCor());
+
+                cd = new CountDown(this, principal.getExerciseTime(), 10);
+                cd.start();
+
+                break;
+            case REST:
+                actualNumberOfLoops++;
+                actualNumberOfExercises++;
+                status = Status.EXERCISE;
+
+                principal.setBackgroundColor(status.getCor());
+
+                cd = new CountDown(this, principal.getExerciseTime(), 10);
+                cd.start();
+
+                break;
+            default:
+                break;
+
+        }
     }
 }
