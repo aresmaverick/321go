@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:rowCount="3"
-    android:columnCount="2">
+    android:columnCount="3">
 
     <GridLayout
         android:id="@+id/background_chron"
         android:orientation="vertical"
-        android:layout_columnSpan="2"
+        android:layout_columnSpan="3"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:columnCount="2"
@@ -67,51 +67,77 @@
 
     </GridLayout>
 
+<!--
     <Chronometer
         android:id="@+id/chronometer"
-
+        android:layout_columnSpan="3"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="10dp"
         android:format="Total (%m:%s)"
         android:text="Chronometer"
-        android:textSize="50sp" />
+        android:textSize="50sp"
+        android:countDown="true"/>
+-->
 
+    <GridLayout
+        android:orientation="horizontal"
+        android:layout_columnSpan="3"
+        android:layout_gravity="center_horizontal"
+        >
 
+        <TextView
+            android:id="@+id/minutes_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="00"
+            android:textSize="20sp"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=":"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/second_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="00"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="."
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/centisecond_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="00"
+            android:textSize="20sp"/>
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="95sp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:text="Start" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="50sp"
-            android:gravity="center"
-            android:orientation="horizontal" >
+    <Button
+        android:id="@+id/pause_button"
+        android:layout_width="95sp"
+        android:layout_height="wrap_content"
+        android:text="Pause" />
 
-            <Button
-                android:id="@+id/start_button"
-                android:layout_width="95sp"
-                android:layout_height="wrap_content"
-                android:text="Start" />
-
-            <Button
-                android:id="@+id/pause_button"
-                android:layout_width="95sp"
-                android:layout_height="wrap_content"
-                android:text="Pause" />
-
-            <Button
-                android:id="@+id/settings_button"
-                android:layout_width="95sp"
-                android:layout_height="wrap_content"
-                android:text="Settings"
-                />
-        </LinearLayout>
-
-
-    </RelativeLayout>
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="95sp"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        />
 
 </GridLayout>
