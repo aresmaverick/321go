@@ -8,9 +8,11 @@ import android.widget.TextView;
 
 public interface CountDownChronOwner {
 
-    public TextView getMinutesText();
-    public TextView getSecondsText();
-    public TextView getCentisecondsText();
+    TextView getMinutesText();
+    TextView getSecondsText();
+    TextView getCentisecondsText();
 
-    public RoutineConfig getRoutineConfig();
+    RoutineConfig getRoutineConfig();
+    void onFinish();
+
 }
