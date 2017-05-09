@@ -10,7 +10,9 @@ import android.widget.TextView;
 import br.com.a3maismais.a321go.R;
 import br.com.a3maismais.a321go.model.CountDown;
 import br.com.a3maismais.a321go.model.CountDownChronOwner;
+import br.com.a3maismais.a321go.model.FunctionalRoutine;
 import br.com.a3maismais.a321go.model.RoutineConfig;
+import br.com.a3maismais.a321go.model.Status;
 
 public class ActivityPrincipal extends AppCompatActivity implements CountDownChronOwner {
 
@@ -46,15 +48,15 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
         centisecondsText = (TextView) findViewById(R.id.centisecond_text);
 
         background = (GridLayout) findViewById(R.id.background_chron);
+        background.setBackgroundColor(Status.STOPPED.getCor());
 
         config = (RoutineConfig) getIntent().getSerializableExtra(RoutineConfig.CONFIG_NAME);
-
-        final CountDown cd = new CountDown(this, config.getExerciseTime(), 10);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cd.start();
+                FunctionalRoutine fr = new FunctionalRoutine(ActivityPrincipal.this);
+                fr.onStart();
             }
         });
 
