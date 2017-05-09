@@ -42,9 +42,9 @@ public class CountDown extends CountDownTimer {
         TextView secondsText = owner.getSecondsText();
         TextView centisecondsText = owner.getCentisecondsText();
 
-        minutesText.setText(String.valueOf(minutes));
-        secondsText.setText(String.valueOf(seconds));
-        centisecondsText.setText(String.valueOf(centiseconds));
+        minutesText.setText(String.format("%02d", minutes));
+        secondsText.setText(String.format("%02d", seconds));
+        centisecondsText.setText(String.format("%02d", centiseconds));
     }
 
     @Override
