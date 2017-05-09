@@ -22,8 +22,8 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
     TextView executedRestTime;
 
     TextView minutesText;
-    public TextView secondText;
-    TextView centisecondText;
+    TextView secondText;
+    TextView centisecondsText;
 
     GridLayout background;
 
@@ -43,18 +43,17 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
 
         minutesText = (TextView) findViewById(R.id.minutes_text);
         secondText = (TextView) findViewById(R.id.second_text);
-        centisecondText = (TextView) findViewById(R.id.centisecond_text);
+        centisecondsText = (TextView) findViewById(R.id.centisecond_text);
 
         background = (GridLayout) findViewById(R.id.background_chron);
 
         config = (RoutineConfig) getIntent().getSerializableExtra(RoutineConfig.CONFIG_NAME);
 
-        final CountDown cd = new CountDown(this, 99000, 1000);
+        final CountDown cd = new CountDown(this, config.getExerciseTime(), 10);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                secondText.setText("99");
                 cd.start();
             }
         });
@@ -116,21 +115,26 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
 
     @Override
     public TextView getMinutesText() {
-        return null;
+        return minutesText;
     }
 
     @Override
     public TextView getSecondsText() {
-        return null;
+        return secondText;
     }
 
     @Override
     public TextView getCentisecondsText() {
-        return null;
+        return centisecondsText;
     }
 
     @Override
     public RoutineConfig getRoutineConfig() {
         return null;
+    }
+
+    @Override
+    public void onFinish() {
+
     }
 }
