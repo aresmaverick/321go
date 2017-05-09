@@ -1,8 +1,7 @@
 package br.com.a3maismais.a321go.model;
 
 import android.os.CountDownTimer;
-
-import br.com.a3maismais.a321go.activity.ActivityPrincipal;
+import android.widget.TextView;
 
 /**
  * Created by fred on 08/05/17.
@@ -10,7 +9,11 @@ import br.com.a3maismais.a321go.activity.ActivityPrincipal;
 
 public class CountDown extends CountDownTimer {
 
-    ActivityPrincipal principal;
+    private static final int MILLIS_TO_CENTISECONDS = 10;
+    private static final int MILLIS_TO_SECONDS = 1000;
+    private static final int MILLIS_TO_MINUTES = 60000;
+
+    CountDownChronOwner owner;
 
     /**
      * @param millisInFuture    The number of millis in the future from the call
@@ -23,18 +26,29 @@ public class CountDown extends CountDownTimer {
         super(millisInFuture, countDownInterval);
     }
 
-    public CountDown(ActivityPrincipal principal, long millisInFuture, long countDownInterval) {
+    public CountDown(CountDownChronOwner owner, long millisInFuture, long countDownInterval) {
         this(millisInFuture, countDownInterval);
-        this.principal = principal;
+        this.owner = owner;
     }
 
+    //TODO - First implementation will re-calculate all chronometer's field.
     @Override
     public void onTick(long millisUntilFinished) {
-        this.principal.secondText.setText(String.valueOf(millisUntilFinished));
+        long minutes = millisUntilFinished / MILLIS_TO_MINUTES;
+        long seconds = (millisUntilFinished % MILLIS_TO_MINUTES) / MILLIS_TO_SECONDS;
+        long centiseconds = ((millisUntilFinished % MILLIS_TO_MINUTES) % MILLIS_TO_SECONDS) / MILLIS_TO_CENTISECONDS;
+
+        TextView minutesText = owner.getMinutesText();
+        TextView secondsText = owner.getSecondsText();
+        TextView centisecondsText = owner.getCentisecondsText();
+
+        minutesText.setText(String.valueOf(minutes));
+        secondsText.setText(String.valueOf(seconds));
+        centisecondsText.setText(String.valueOf(centiseconds));
     }
 
     @Override
     public void onFinish() {
-
+        owner.onFinish();
     }
 }
