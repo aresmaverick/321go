@@ -8,7 +8,6 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import br.com.a3maismais.a321go.R;
-import br.com.a3maismais.a321go.model.CountDown;
 import br.com.a3maismais.a321go.model.CountDownChronOwner;
 import br.com.a3maismais.a321go.model.FunctionalRoutine;
 import br.com.a3maismais.a321go.model.RoutineConfig;
