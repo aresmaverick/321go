@@ -62,11 +62,26 @@ public class FunctionalRoutine implements CountDownChronOwner {
 
                 break;
             case EXERCISE:
-                status = Status.PREPARE;
+                if (actualNumberOfExercises == principal.getNumberOfExercises()) {
+                    if (actualNumberOfLoops == principal.getNumberOfLoops()) {
+                        getCentisecondsText().setText("00");
+                        break;
+                    }
 
-                principal.setBackgroundColor(status.getCor());
+                    status = Status.REST;
 
-                cd = new CountDown(this, principal.getPrepareTime(), 10);
+                    principal.setBackgroundColor(status.getCor());
+
+                    cd = new CountDown(this, principal.getRestTime(), 10);
+
+                } else {
+                    status = Status.PREPARE;
+
+                    principal.setBackgroundColor(status.getCor());
+
+                    cd = new CountDown(this, principal.getPrepareTime(), 10);
+                }
+
                 cd.start();
 
                 break;
@@ -82,7 +97,7 @@ public class FunctionalRoutine implements CountDownChronOwner {
                 break;
             case REST:
                 actualNumberOfLoops++;
-                actualNumberOfExercises++;
+                actualNumberOfExercises = 1;
                 status = Status.EXERCISE;
 
                 principal.setBackgroundColor(status.getCor());
