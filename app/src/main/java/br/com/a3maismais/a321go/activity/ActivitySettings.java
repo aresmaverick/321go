@@ -17,6 +17,8 @@ import br.com.a3maismais.a321go.model.RoutineConfig;
 
 public class ActivitySettings extends AppCompatActivity {
 
+    private final static int TO_MILLIS = 1000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +55,9 @@ public class ActivitySettings extends AppCompatActivity {
 
         Integer numberLoops = Integer.parseInt(numberCicles.getText().toString());
         Integer numberExercises = Integer.parseInt(numberActivity.getText().toString());
-        Long exerciseTime = Long.parseLong(timeActivity.getText().toString());
-        Long prepareTime = Long.parseLong(timePrepare.getText().toString());
-        Long restTime = Long.parseLong(timeRest.getText().toString());
+        Long exerciseTime = Long.parseLong(timeActivity.getText().toString()) * TO_MILLIS;
+        Long prepareTime = Long.parseLong(timePrepare.getText().toString()) * TO_MILLIS;
+        Long restTime = Long.parseLong(timeRest.getText().toString()) * TO_MILLIS;
 
         return new RoutineConfig(numberLoops, numberExercises, exerciseTime, prepareTime, restTime);
     }
