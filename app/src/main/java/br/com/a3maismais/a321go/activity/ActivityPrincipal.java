@@ -15,6 +15,9 @@ import br.com.a3maismais.a321go.model.Status;
 
 public class ActivityPrincipal extends AppCompatActivity implements CountDownChronOwner {
 
+    final static String START = "START";
+    final static String PAUSE = "PAUSE";
+
     RoutineConfig config;
 
     TextView numberExecutedCicles;
@@ -33,9 +36,8 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
 
-        Button startButton = (Button) findViewById(R.id.start_button);
-        Button settingButton = (Button) findViewById(R.id.settings_button);
-        Button pauseButton = (Button) findViewById(R.id.pause_button);
+        final Button startButton = (Button) findViewById(R.id.start_pause_button);
+        Button settingButton = (Button) findViewById(R.id.settings_stop_button);
 
         numberExecutedCicles = (TextView) findViewById(R.id.number_executed_cicles);
         numberExecutedExercises = (TextView) findViewById(R.id.number_executed_exercises);
@@ -52,7 +54,14 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fr.onStart();
+                if (startButton.getText().equals(START)) {
+                    fr.onStart();
+                    startButton.setText(PAUSE);
+                } else {
+                    fr.onPause();
+                    startButton.setText(START);
+                }
+
             }
         });
 
@@ -60,13 +69,6 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-
-        pauseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fr.onPause();
             }
         });
     }
