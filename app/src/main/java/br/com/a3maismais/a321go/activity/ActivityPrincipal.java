@@ -26,6 +26,8 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
 
     GridLayout background;
 
+    final FunctionalRoutine fr = new FunctionalRoutine(ActivityPrincipal.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,6 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FunctionalRoutine fr = new FunctionalRoutine(ActivityPrincipal.this);
                 fr.onStart();
             }
         });
@@ -65,7 +66,7 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                fr.onPause();
             }
         });
     }

@@ -17,6 +17,10 @@ public class FunctionalRoutine implements CountDownChronOwner {
     private int actualNumberOfExercises = 0;
     private Status status = Status.STOPPED;
 
+    private CountDown cd;
+
+    private boolean isPaused = false;
+
     public FunctionalRoutine(ActivityPrincipal principal) {
         this.principal = principal;
     }
@@ -47,8 +51,6 @@ public class FunctionalRoutine implements CountDownChronOwner {
     }
 
     public void onStart() {
-        CountDown cd;
-
         switch (status) {
             case STOPPED:
                 actualNumberOfLoops++;
@@ -66,54 +68,74 @@ public class FunctionalRoutine implements CountDownChronOwner {
 
                 break;
             case EXERCISE:
-                if (actualNumberOfExercises == principal.getNumberOfExercises()) {
-                    if (actualNumberOfLoops == principal.getNumberOfLoops()) {
-                        getCentisecondsText().setText("00");
-                        break;
-                    }
+                if (isPaused) {
+                    cd = new CountDown(this, getCurrentChronInMillis(), 10);
 
-                    status = Status.REST;
-
-                    principal.setBackgroundColor(status.getCor());
-
-                    cd = new CountDown(this, principal.getRestTime(), 10);
-
+                    isPaused = false;
                 } else {
-                    status = Status.PREPARE;
+                    if (actualNumberOfExercises == principal.getNumberOfExercises()) {
+                        if (actualNumberOfLoops == principal.getNumberOfLoops()) {
+                            getCentisecondsText().setText("00");
+                            break;
+                        }
 
-                    principal.setBackgroundColor(status.getCor());
+                        status = Status.REST;
 
-                    cd = new CountDown(this, principal.getPrepareTime(), 10);
+                        principal.setBackgroundColor(status.getCor());
+
+                        cd = new CountDown(this, principal.getRestTime(), 10);
+
+                    } else {
+                        status = Status.PREPARE;
+
+                        principal.setBackgroundColor(status.getCor());
+
+                        cd = new CountDown(this, principal.getPrepareTime(), 10);
+                    }
                 }
 
                 cd.start();
 
                 break;
             case PREPARE:
-                actualNumberOfExercises++;
+                if (isPaused) {
+                    cd = new CountDown(this, getCurrentChronInMillis(), 10);
 
-                principal.setNumberOfExercies(actualNumberOfExercises);
+                    isPaused = false;
+                } else {
+                    actualNumberOfExercises++;
 
-                status = Status.EXERCISE;
+                    principal.setNumberOfExercies(actualNumberOfExercises);
 
-                principal.setBackgroundColor(status.getCor());
+                    status = Status.EXERCISE;
 
-                cd = new CountDown(this, principal.getExerciseTime(), 10);
+                    principal.setBackgroundColor(status.getCor());
+
+                    cd = new CountDown(this, principal.getExerciseTime(), 10);
+                }
+
                 cd.start();
 
                 break;
             case REST:
-                actualNumberOfLoops++;
-                actualNumberOfExercises = 1;
+                if (isPaused) {
+                    cd = new CountDown(this, getCurrentChronInMillis(), 10);
 
-                principal.setNumberOfLoops(actualNumberOfLoops);
-                principal.setNumberOfExercies(actualNumberOfExercises);
+                    isPaused = false;
+                } else {
+                    actualNumberOfLoops++;
+                    actualNumberOfExercises = 1;
 
-                status = Status.EXERCISE;
+                    principal.setNumberOfLoops(actualNumberOfLoops);
+                    principal.setNumberOfExercies(actualNumberOfExercises);
 
-                principal.setBackgroundColor(status.getCor());
+                    status = Status.EXERCISE;
 
-                cd = new CountDown(this, principal.getExerciseTime(), 10);
+                    principal.setBackgroundColor(status.getCor());
+
+                    cd = new CountDown(this, principal.getExerciseTime(), 10);
+                }
+
                 cd.start();
 
                 break;
@@ -121,5 +143,25 @@ public class FunctionalRoutine implements CountDownChronOwner {
                 break;
 
         }
+    }
+
+    public void onPause() {
+        if (cd != null) {
+            if (isPaused) {
+                onStart();
+            } else {
+                cd.cancel();
+
+                isPaused = true;
+            }
+        }
+    }
+
+    private Long getCurrentChronInMillis() {
+        long actualMinutesInMillis = Long.parseLong(getMinutesText().getText().toString()) * 60 * 1000;
+        long actualSecondsInMillis = Long.parseLong(getSecondsText().getText().toString()) * 1000;
+        long actualCeentisecondsInMillis = Long.parseLong(getCentisecondsText().getText().toString()) * 10;
+
+        return actualCeentisecondsInMillis + actualMinutesInMillis + actualSecondsInMillis;
     }
 }
