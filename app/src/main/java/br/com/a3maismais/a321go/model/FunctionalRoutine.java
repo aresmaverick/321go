@@ -53,6 +53,10 @@ public class FunctionalRoutine implements CountDownChronOwner {
             case STOPPED:
                 actualNumberOfLoops++;
                 actualNumberOfExercises++;
+
+                principal.setNumberOfLoops(actualNumberOfLoops);
+                principal.setNumberOfExercies(actualNumberOfExercises);
+
                 status = Status.EXERCISE;
 
                 principal.setBackgroundColor(status.getCor());
@@ -87,6 +91,9 @@ public class FunctionalRoutine implements CountDownChronOwner {
                 break;
             case PREPARE:
                 actualNumberOfExercises++;
+
+                principal.setNumberOfExercies(actualNumberOfExercises);
+
                 status = Status.EXERCISE;
 
                 principal.setBackgroundColor(status.getCor());
@@ -98,6 +105,10 @@ public class FunctionalRoutine implements CountDownChronOwner {
             case REST:
                 actualNumberOfLoops++;
                 actualNumberOfExercises = 1;
+
+                principal.setNumberOfLoops(actualNumberOfLoops);
+                principal.setNumberOfExercies(actualNumberOfExercises);
+
                 status = Status.EXERCISE;
 
                 principal.setBackgroundColor(status.getCor());
