@@ -62,19 +62,19 @@
         android:layout_gravity="fill_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5000"/>
+        android:text="5"/>
 
     <EditText
         android:id="@+id/time_prepare"
         android:layout_gravity="fill_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5000"/>
+        android:text="2"/>
 
     <EditText
         android:id="@+id/time_rest"
         android:layout_gravity="fill_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5000"/>
+        android:text="3"/>
 </GridLayout>
