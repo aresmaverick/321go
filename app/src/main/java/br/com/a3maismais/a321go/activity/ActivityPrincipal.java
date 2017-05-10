@@ -19,8 +19,6 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
 
     TextView numberExecutedCicles;
     TextView numberExecutedExercises;
-    TextView executedExerciseTime;
-    TextView executedRestTime;
 
     TextView minutesText;
     TextView secondText;
@@ -39,8 +37,6 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
 
         numberExecutedCicles = (TextView) findViewById(R.id.number_executed_cicles);
         numberExecutedExercises = (TextView) findViewById(R.id.number_executed_exercises);
-        executedExerciseTime = (TextView) findViewById(R.id.executed_exercise_time);
-        executedRestTime = (TextView) findViewById(R.id.executed_rest_time);
 
         minutesText = (TextView) findViewById(R.id.minutes_text);
         secondText = (TextView) findViewById(R.id.second_text);
@@ -86,6 +82,10 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
         numberExecutedCicles. setText(String.valueOf(loopNumber));
     }
 
+    public void setNumberOfExercies(int numberOfExercies) {
+        numberExecutedExercises.setText(String.valueOf(numberOfExercies));
+    }
+
     public int getNumberOfExercises() {
         if (config == null) {
             return 0;
@@ -104,10 +104,6 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
 
     public Long getRestTime() {
         return config.getRestTime();
-    }
-
-    public void setNumberOfExercies(int numberOfExercies) {
-        numberExecutedExercises.setText(String.valueOf(numberOfExercies));
     }
 
     public void setBackgroundColor(int backgroundColor) {
