@@ -58,10 +58,10 @@
     </GridLayout>
 
     <Button
-        android:id="@+id/start_button"
-        android:layout_width="95sp"
+        android:id="@+id/start_pause_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start" />
+        android:text="Start"/>
 
     <TextView
         android:id="@+id/number_executed_cicles"
@@ -82,16 +82,9 @@
         android:text="-----------------"/>
 
     <Button
-        android:id="@+id/pause_button"
-        android:layout_width="95sp"
+        android:id="@+id/settings_stop_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pause" />
-
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="95sp"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        />
+        android:text="Settings"/>
 
 </GridLayout>
