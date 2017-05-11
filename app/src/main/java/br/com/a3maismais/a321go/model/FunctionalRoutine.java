@@ -1,7 +1,9 @@
 package br.com.a3maismais.a321go.model;
 
+import android.media.MediaPlayer;
 import android.widget.TextView;
 
+import br.com.a3maismais.a321go.R;
 import br.com.a3maismais.a321go.activity.ActivityPrincipal;
 
 /**
@@ -12,6 +14,7 @@ public class FunctionalRoutine implements CountDownChronOwner {
 
 
     ActivityPrincipal principal;
+    MediaPlayer mp;
 
     private int actualNumberOfLoops = 0;
     private int actualNumberOfExercises = 0;
@@ -47,6 +50,11 @@ public class FunctionalRoutine implements CountDownChronOwner {
 
     @Override
     public void onFinish() {
+        if (status == Status.EXERCISE) {
+            MediaPlayer mp = MediaPlayer.create(principal, R.raw.bell);
+            mp.start();
+        }
+
         onStart();
     }
 
@@ -62,6 +70,9 @@ public class FunctionalRoutine implements CountDownChronOwner {
                 status = Status.EXERCISE;
 
                 principal.setBackgroundColor(status.getCor());
+
+                mp = MediaPlayer.create(principal, R.raw.whistle);
+                mp.start();
 
                 cd = new CountDown(this, principal.getExerciseTime(), 10);
                 cd.start();
@@ -111,6 +122,9 @@ public class FunctionalRoutine implements CountDownChronOwner {
 
                     principal.setBackgroundColor(status.getCor());
 
+                    mp = MediaPlayer.create(principal, R.raw.whistle);
+                    mp.start();
+
                     cd = new CountDown(this, principal.getExerciseTime(), 10);
                 }
 
@@ -132,6 +146,9 @@ public class FunctionalRoutine implements CountDownChronOwner {
                     status = Status.EXERCISE;
 
                     principal.setBackgroundColor(status.getCor());
+
+                    mp = MediaPlayer.create(principal, R.raw.whistle);
+                    mp.start();
 
                     cd = new CountDown(this, principal.getExerciseTime(), 10);
                 }
