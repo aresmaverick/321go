@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import br.com.a3maismais.a321go.R;
 import br.com.a3maismais.a321go.activity.ActivityPrincipal;
+import br.com.a3maismais.a321go.br.com.a3maismais.components.SoundPlayer;
 
 /**
  * Created by fred on 04/05/17.
@@ -51,8 +52,7 @@ public class FunctionalRoutine implements CountDownChronOwner {
     @Override
     public void onFinish() {
         if (status == Status.EXERCISE) {
-            MediaPlayer mp = MediaPlayer.create(principal, R.raw.bell);
-            mp.start();
+            SoundPlayer.playBell(principal);
         }
 
         onStart();
@@ -71,8 +71,7 @@ public class FunctionalRoutine implements CountDownChronOwner {
 
                 principal.setBackgroundColor(status.getCor());
 
-                mp = MediaPlayer.create(principal, R.raw.whistle);
-                mp.start();
+                SoundPlayer.playWhistle(principal);
 
                 cd = new CountDown(this, principal.getExerciseTime(), 10);
                 cd.start();
@@ -122,8 +121,7 @@ public class FunctionalRoutine implements CountDownChronOwner {
 
                     principal.setBackgroundColor(status.getCor());
 
-                    mp = MediaPlayer.create(principal, R.raw.whistle);
-                    mp.start();
+                    SoundPlayer.playWhistle(principal);
 
                     cd = new CountDown(this, principal.getExerciseTime(), 10);
                 }
@@ -147,8 +145,7 @@ public class FunctionalRoutine implements CountDownChronOwner {
 
                     principal.setBackgroundColor(status.getCor());
 
-                    mp = MediaPlayer.create(principal, R.raw.whistle);
-                    mp.start();
+                    SoundPlayer.playWhistle(principal);
 
                     cd = new CountDown(this, principal.getExerciseTime(), 10);
                 }
