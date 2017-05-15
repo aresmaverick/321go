@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/principal"/>
+
+    <TextView
+        android:id="@+id/three"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="3"
+        android:textSize="400sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:visibility="gone"
+        android:textColor="#FF0000"
+        android:background="#D0FFFFFF"/>
+
+    <TextView
+        android:id="@+id/two"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="2"
+        android:textSize="400sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:visibility="gone"
+        android:textColor="#FF0000"
+        android:background="#D0FFFFFF"/>
+
+    <TextView
+        android:id="@+id/one"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="1"
+        android:textSize="400sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:visibility="gone"
+        android:textColor="#FF0000"
+        android:background="#D0FFFFFF"/>
+
+    <TextView
+        android:id="@+id/go"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="GO!"
+        android:textSize="220sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:visibility="gone"
+        android:textColor="#FF0000"
+        android:background="#D0FFFFFF"/>
+
+</FrameLayout>
