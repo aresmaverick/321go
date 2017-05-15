@@ -35,7 +35,7 @@
             android:text=":"
             android:textSize="80sp"/>
 
-        <TextView
+        <br.com.a3maismais.a321go.br.com.a3maismais.components.ChronTextView
             android:id="@+id/second_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
