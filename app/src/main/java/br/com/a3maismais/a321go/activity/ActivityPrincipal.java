@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import br.com.a3maismais.a321go.R;
 import br.com.a3maismais.a321go.model.CountDownChronOwner;
+import br.com.a3maismais.a321go.model.CountDownLogo;
 import br.com.a3maismais.a321go.model.FunctionalRoutine;
 import br.com.a3maismais.a321go.model.RoutineConfig;
 import br.com.a3maismais.a321go.model.Status;
@@ -34,7 +35,7 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principal);
+        setContentView(R.layout.logo_3_2_1_go);
 
         final Button startButton = (Button) findViewById(R.id.start_pause_button);
         Button settingButton = (Button) findViewById(R.id.settings_stop_button);
@@ -55,7 +56,10 @@ public class ActivityPrincipal extends AppCompatActivity implements CountDownChr
             @Override
             public void onClick(View v) {
                 if (startButton.getText().equals(START)) {
-                    fr.onStart();
+
+                    CountDownLogo cdl = new CountDownLogo(ActivityPrincipal.this, fr, 5000l, 1000l);
+
+                    cdl.start();
                     startButton.setText(PAUSE);
                 } else {
                     fr.onPause();
