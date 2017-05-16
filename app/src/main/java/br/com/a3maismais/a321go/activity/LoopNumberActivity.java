@@ -13,7 +13,7 @@ import java.util.List;
 
 import br.com.a3maismais.a321go.R;
 
-public class LoopNumberAcitivity extends AppCompatActivity {
+public class LoopNumberActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class LoopNumberAcitivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoopNumberAcitivity.this, ExerciseNumberActivity.class);
+                Intent intent = new Intent(LoopNumberActivity.this, ExerciseNumberActivity.class);
                 startActivity(intent);
             }
         });
