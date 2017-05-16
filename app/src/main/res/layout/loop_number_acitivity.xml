@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:rowCount="3"
+    android:columnCount="1"
+    android:padding="20sp">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Loop Number"
+        android:textSize="50sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50sp"/>
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/loop_number_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/minute_second_arrays"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70sp"
+
+        ></android.support.v7.widget.AppCompatSpinner>
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="NEXT"
+        android:layout_gravity="bottom"
+        android:textSize="30sp"/>
+</GridLayout>
